@@ -12,17 +12,15 @@ UPositionReport::UPositionReport()
 	bWantsBeginPlay = true;
 	PrimaryComponentTick.bCanEverTick = true;
 
-	// ...
-}
-
+    }
 
 // Called when the game starts
 void UPositionReport::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
-	
+    UE_LOG(LogTemp, Warning, TEXT("Position report reporting for duty on Chair"));
+  	
 }
 
 
