@@ -11,8 +11,9 @@ class BUILDINGESCAPE_API UOpenDoor : public UActorComponent
 {
 	GENERATED_BODY()
 
-public:	
-	// Sets default values for this component's properties
+public:
+    void OpenDoor();
+    // Sets default values for this component's properties
 	UOpenDoor();
 
 	// Called when the game starts
@@ -28,6 +29,9 @@ private:
     
     UPROPERTY(EditAnywhere)
     ATriggerVolume* PressurePlate;
+    
+    UPROPERTY(EditAnyWhere)
+    AActor* ActorThatOpens;//remember paws inherits from actor
     
 	
 };
