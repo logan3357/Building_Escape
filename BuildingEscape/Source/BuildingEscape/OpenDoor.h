@@ -12,26 +12,37 @@ class BUILDINGESCAPE_API UOpenDoor : public UActorComponent
 	GENERATED_BODY()
 
 public:
-    void OpenDoor();
+    
+    
     // Sets default values for this component's properties
 	UOpenDoor();
 
 	// Called when the game starts
 	virtual void BeginPlay() override;
-	
-	// Called every frame
+    
+    
+	void OpenDoor();
+    void CloseDoor();
+    
+    // Called every frame
 	virtual void TickComponent( float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction ) override;
 
     
 private:
-    UPROPERTY(VisibleAnywhere)
+    UPROPERTY(EditAnywhere)
     float OpenAngle = 30.0f;
     
     UPROPERTY(EditAnywhere)
     ATriggerVolume* PressurePlate;
     
-    UPROPERTY(EditAnyWhere)
-    AActor* ActorThatOpens;//remember paws inherits from actor
+    UPROPERTY(EditAnywhere)
+    float DoorCloseDelay = 1.f;
     
-	
+    float LastDoorOpenTime;
+    
+    UPROPERTY(VisibleAnywhere)
+    AActor* ActorThatOpens;//remember paws inherits from actor
+    AActor* Owner; //The owning door
+    
+    
 };
