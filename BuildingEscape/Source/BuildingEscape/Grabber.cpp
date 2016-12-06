@@ -23,7 +23,47 @@ void UGrabber::BeginPlay()
 
 	// ...
     UE_LOG(LogTemp, Warning, TEXT("Grabber Reporting for duty!"));
-	
+    
+    ///look for attached  input component (only appears at start)
+    InputComponent = GetOwner()->FindComponentByClass<UInputComponent>();
+    if (InputComponent)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Input component found"))
+        ///bind the input axis
+        InputComponent->BindAction("Grab", IE_Pressed, this, &UGrabber::Grab);
+        InputComponent->BindAction("Grab", IE_Released, this, &UGrabber::Release);
+        
+        
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("%s Input component not found"), *GetOwner()->GetName())
+    }
+    
+    UE_LOG(LogTemp, Warning, TEXT("Grabber Reporting for duty!"));
+    
+    ///look for attached Phisics Handle
+    PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
+    if (PhysicsHandle)
+    {
+        //Physics handle was found
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("%s PhysicsHandle component not found"), *GetOwner()->GetName())
+    }
+    
+}
+
+
+void UGrabber::Grab()
+{
+     UE_LOG(LogTemp, Warning, TEXT("Grab pressed"));
+}
+
+void UGrabber::Release()
+{
+    UE_LOG(LogTemp, Warning, TEXT("Grab Released"));
 }
 
 
