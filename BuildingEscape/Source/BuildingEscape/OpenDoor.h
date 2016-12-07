@@ -40,9 +40,11 @@ private:
     
     float LastDoorOpenTime;
     
-    UPROPERTY(VisibleAnywhere)
-    AActor* ActorThatOpens;//remember paws inherits from actor
+    
     AActor* Owner; //The owning door
+    //returns total mass in kilos
+    float GetTotalMassOfActorsOnPlate();
+
     
     
 };
